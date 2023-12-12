@@ -1,7 +1,7 @@
 extends Area2D
 
 
-@export var speed = 20
+@export var speed = 400
 
 
 func _process(delta):
@@ -16,6 +16,11 @@ func _process(delta):
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
 
-	position += velocity.normalized() * speed
+	position += velocity.normalized() * speed * delta
 
 	pass
+
+
+func _on_body_entered(body):
+	print("Goodbye World!")
+	hide()
